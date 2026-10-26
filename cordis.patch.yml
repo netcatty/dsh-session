@@ -1,0 +1,5 @@
+# dsh-session bundle 层：插入会话管理插件行。
+- insert:
+    - id: dsh-session
+      name: '@netcatty/dsh-session'
+      config: {}
