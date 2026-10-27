@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.5
+
+- 恢复入口 id 为 `dsh-session`，避免与官方 `session` 行冲突。
+
 ## 0.2.2
 
 - 清理 README 中的参考说明与未实现功能限制描述。

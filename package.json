@@ -1,6 +1,6 @@
 {
   "name": "@netcatty/dsh-session",
-  "version": "0.2.2",
+  "version": "0.2.5",
   "description": "Session management for DeepSeek Harness: catalog, search, annotations, trash/restore, workspace move, preset migration and export",
   "type": "module",
   "main": "lib/index.js",

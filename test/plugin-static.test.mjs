@@ -28,6 +28,12 @@ test('host API authenticates, serializes mutations and validates annotations', (
   assert.match(source, /assertSessionId/);
 });
 
+test('bundle patch does not collide with the official session entry', () => {
+  const patch = readFileSync(new URL('../cordis.patch.yml', import.meta.url), 'utf8');
+  assert.match(patch, /id: dsh-session/);
+  assert.doesNotMatch(patch, /^\s*-\s*id:\s*session\s*$/m);
+});
+
 test('client follows theme tokens and registers the expected slots', () => {
   const source = read('client.js');
   for (const token of ['--dsw-alias-bg-overlay', '--dsw-alias-label-primary', '--dsw-alias-state-error-primary']) {
