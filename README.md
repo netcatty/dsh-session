@@ -180,13 +180,13 @@ POST /export-zip                 { ids }
   不完整尾行。
 - **发布**：临时文件 + fsync + rename，失败时 backup 回滚；不会把成功解码的前缀当成
   完整日志发布。
-- **活会话**：删除前 flush / cancel / detach；移动拒绝 live 会话；预设迁移走 live
-  append 或冷重写。
+- **活会话**：删除或移动前 flush / cancel / detach；移动 live 会话会先停止并关闭；
+  预设迁移走 live append 或冷重写。
 - **标记文件**：损坏时拒绝写入，避免把部分状态覆盖到真实标记上。
 
 ## 已知限制
 
-- 工作区移动要求目标工作区已在 DSH 注册；没有“新建工作区”入口。
+- 工作区移动要求目标工作区已在 DSH 注册；可在工作区页新建、重命名、移除注册。
 - 标记只保存在本机 profile 的 `~/.dsh/dsh-plugins/dsh-session`，不随会话文件迁移。
 
 ## 开发
