@@ -1,15 +1,17 @@
 {
   "name": "@netcatty/dsh-session",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Session management for DeepSeek Harness: catalog, search, annotations, trash/restore, workspace move, preset migration and export",
   "type": "module",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
     "lib",
+    "locale",
     "cordis.patch.yml",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ],
   "dsh": {
     "bundle": {
@@ -37,6 +39,27 @@
     },
     "./client": {
       "default": "./lib/client.js"
-    }
+    },
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "session",
+    "workspace",
+    "plugin"
+  ],
+  "author": "netcatty",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/netcatty/dsh-session.git"
+  },
+  "homepage": "https://github.com/netcatty/dsh-session#readme",
+  "bugs": {
+    "url": "https://github.com/netcatty/dsh-session/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

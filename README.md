@@ -91,12 +91,26 @@ Agent 预设迁移、批量操作与 Markdown 导出。
 
 ## 安装
 
+从 npm 安装：
+
+```sh
+dsh plugin --profile web add @netcatty/dsh-session
+```
+
+从 GitHub 安装：
+
+```sh
+dsh plugin --profile web add git+https://github.com/netcatty/dsh-session.git
+```
+
+本地开发：
+
 ```sh
 dsh plugin --profile web add link:/path/to/dsh-session
 ```
 
-或把本仓库加入 profile 的 bundle 列表。安装后刷新 Web 页面；客户端 bundle 由
-`client-hmr` 监听，宿主改动需要重载插件或重启 `dsh web`。
+安装后刷新 Web 页面；客户端 bundle 由 `client-hmr` 监听，宿主改动需要重载插件或
+重启 `dsh web`。插件设置卡片的标题和说明来自 `locale/en.json` / `locale/zh.json`。
 
 ## 数据布局
 
