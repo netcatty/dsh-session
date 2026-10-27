@@ -17,6 +17,8 @@ test('host API authenticates, serializes mutations and validates annotations', (
   assert.match(source, /workspace-create/);
   assert.match(source, /workspace-rename/);
   assert.match(source, /path === '\/pin'/);
+  assert.match(source, /batch-pin/);
+  assert.match(source, /workspace-order/);
   assert.match(source, /path === '\/rename'/);
   assert.match(source, /retireLiveSession\(id\)/);
   assert.match(source, /mainSessions/);
@@ -66,6 +68,10 @@ test('client follows theme tokens and registers the expected slots', () => {
   assert.match(source, /dshs-footer-stat/);
   assert.match(source, /trashMain/);
   assert.match(source, /trashWorkspaceFilter/);
+  assert.match(source, /annotations-import/);
+  assert.match(source, /cache-clear/);
+  assert.match(source, /MaintenanceDialog/);
+  assert.match(source, /onClick: \(\) => deleteBatch\(\)/);
   assert.match(source, /全选当前/);
   assert.match(source, /batch-tags-append/);
   assert.match(source, /重试失败/);

@@ -25,8 +25,12 @@ Agent 预设迁移、批量操作与 Markdown 导出。
 ### 标记
 
 - 收藏、待回看、优先级 1–5、标签（最多 20 个，每个 ≤ 32 字符）、备注（≤ 2000 字符）。
-- 批量标签支持追加 / 替换 / 清空三种模式。
+- 顶部「更多操作」收纳移动工作区与迁移预设。
+- 批量标签支持追加 / 替换 / 清空三种模式；批量删除先列预览，再逐个执行并显示进度。
+- 批量操作支持置顶 / 取消置顶；回收站批量恢复/彻底删除也先预览，再逐个执行并显示进度。
+- 长会话列表使用 `content-visibility` 按行延迟渲染，减少滚动时的布局/绘制开销。
 - 批量标记、归档、删除的结果弹窗对失败项提供「重试失败」，只重试可重试的 ID。
+- 设置页和会话管理顶部「维护」入口都支持导出/覆盖导入标记、清理列表缓存。
 - 标记写在 `~/.dsh/dsh-plugins/dsh-session/annotations.json`，带 `revision` 与 `updatedAt`；
   多窗口保存冲突时提示“载入最新内容”。
 - 原子发布 + 进程内串行 + 跨进程 advisory lock；损坏文件拒绝覆盖。
@@ -48,7 +52,7 @@ Agent 预设迁移、批量操作与 Markdown 导出。
 
 ### 工作区管理
 
-- 工作区页展示名称、路径、会话数与目录状态；支持新建、重命名和移除工作区。
+- 工作区页展示名称、路径、会话数与目录状态；支持上移/下移排序、新建、重命名和移除工作区。
 - 新建时优先复用 DSH 官方 `sidebar.workspaces.directoryFlow` 目录选择器；不可用时回退
   到内置列表（含上一级、返回、主目录、新建文件夹、显示隐藏文件）。
 - 移除注册默认保留目录与会话日志；可勾选「同时把会话移到回收站」，再清空回收站
@@ -121,6 +125,8 @@ GET  /trash
 GET  /annotations
 POST /annotations                { id, patch, expectedRevision? }
 POST /batch-annotations          { ids, patch, expectedRevisions? }
+POST /annotations-import         { sessions }   # 覆盖导入全部标记
+POST /cache-clear                # 清理标题/预览元数据缓存
 POST /move-to-trash              { id, includeChildren? }
 POST /batch-trash                { ids }
 POST /restore                    { id }

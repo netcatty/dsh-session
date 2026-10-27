@@ -74,3 +74,15 @@ test('corrupt annotation files refuse to be overwritten', () => {
   assert.throws(() => readAnnotations(), (error) => error.code === 'annotations-corrupt');
   assert.throws(() => writeAnnotations({ 'session-a': { favorite: true } }), (error) => error.code === 'annotations-corrupt');
 });
+
+test('importAll replaces the whole annotation state', async () => {
+  const store = createAnnotationStore(tempPath());
+  await store.update('session-a', { favorite: true });
+  const result = await store.importAll({ 'session-b': { favorite: true, tags: ['导入'] } });
+  assert.equal(result.count, 1);
+  const all = await store.list();
+  assert.equal(all['session-a'], undefined);
+  assert.equal(all['session-b'].favorite, true);
+  assert.deepEqual(all['session-b'].tags, ['导入']);
+  await assert.rejects(() => store.importAll(null), /对象/);
+});
