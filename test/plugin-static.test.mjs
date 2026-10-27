@@ -65,6 +65,10 @@ test('client follows theme tokens and registers the expected slots', () => {
   assert.match(source, /subscribeWorkspaceStateRef/);
   assert.match(source, /dshs-footer-stat/);
   assert.match(source, /trashMain/);
+  assert.match(source, /trashWorkspaceFilter/);
+  assert.match(source, /全选当前/);
+  assert.match(source, /batch-tags-append/);
+  assert.match(source, /重试失败/);
   assert.match(source, /子会话 \$\{childCount\}/);
   assert.match(source, /exportOne/);
   assert.match(source, /danger: true/);
