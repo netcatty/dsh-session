@@ -1,14 +1,15 @@
 {
   "name": "@netcatty/dsh-session",
-  "version": "0.1.0",
-  "description": "Session management for DeepSeek Harness: list, search, trash/restore, purge",
+  "version": "0.2.0",
+  "description": "Session management for DeepSeek Harness: catalog, search, annotations, trash/restore, workspace move, preset migration and export",
   "type": "module",
   "main": "lib/index.js",
   "license": "MIT",
   "files": [
     "lib",
     "cordis.patch.yml",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "dsh": {
     "bundle": {
@@ -22,8 +23,13 @@
       ]
     }
   },
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js && node --check lib/store.js && node --check lib/annotations.js && node --check lib/session-files.js && node --check lib/compat/zstd-frames.js && node -e \"import('./lib/index.js')\"",
+    "test": "node --test test/*.test.mjs"
+  },
   "engines": {
-    "dsh": ">=0.2.0"
+    "dsh": ">=0.2.0",
+    "node": "^22.15.0 || >=24.0.0"
   },
   "exports": {
     ".": {
