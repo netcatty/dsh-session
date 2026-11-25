@@ -28,6 +28,17 @@ test('host API authenticates, serializes mutations and validates annotations', (
   assert.match(source, /assertSessionId/);
 });
 
+test('host registers the trash, restore and purge commands', () => {
+  const source = read('index.js');
+  for (const command of ['session-trash', 'session-restore', 'session-purge']) {
+    assert.match(source, new RegExp(`name: '${command}'`));
+  }
+  assert.match(source, /resolveSessionTarget/);
+  assert.match(source, /renderSessionList/);
+  assert.match(source, /不能删除当前正在使用的会话/);
+  assert.match(source, /子会话不能单独删除/);
+});
+
 test('bundle patch does not collide with the official session entry', () => {
   const patch = readFileSync(new URL('../cordis.patch.yml', import.meta.url), 'utf8');
   assert.match(patch, /id: dsh-session/);
